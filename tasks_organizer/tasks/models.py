@@ -10,7 +10,7 @@ class Task(models.Model):
         finished (BooleanField): Information about completing the task.
         parent_task (ForeignKey): Parent task pk.
     """
-    name = models.CharField(max_length=256)
+    name = models.CharField(max_length=256, null=False, blank=False)
     finished = models.BooleanField(default=False)
     parent_task = models.ForeignKey('self',
                                     on_delete=models.CASCADE,
