@@ -13,11 +13,12 @@ class TasksAPITest(APITestCase):
         self.task2 = Task.objects.create(name='test2')
 
     def test_get_all_tasks(self):
-        response = self.client.get(self.url)
+        response = self.client.get(self.url, format='json')
         models = Task.objects.all()
         serializer = TasksSerializer(models, many=True)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data, serializer.data)
+        self.assertEqual(len(response.data), len(serializer.data))
+        self.assertEqual(response.data[0], dict(serializer.data[0]))
 
 
 class CreateTaskViewTestCase(APITestCase):

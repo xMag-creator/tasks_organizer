@@ -10,9 +10,25 @@ class TasksList(APIView):
     Get all tasks.
     """
     def get(self, request):
-        tasks = Task.objects.all()
-        serializer = TasksSerializer(tasks, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        tasks_trees = Task.objects.filter(parent_task=None)
+        result = self.get_tasks_tree(tasks_trees)
+        return Response(result)
+
+    def get_tasks_tree(self, tasks_trees):
+        result = []
+        for tasks_tree in tasks_trees:
+            data = {
+                'id': tasks_tree.id,
+                'name': tasks_tree.name,
+                'finished': tasks_tree.finished,
+                'parent_task': tasks_tree.parent_task,
+
+            }
+            children = tasks_tree.children.all()
+            if children:
+                data['children'] = self.get_tasks_tree(children)
+            result.append(data)
+        return result
 
 
 class CreateTask(APIView):
