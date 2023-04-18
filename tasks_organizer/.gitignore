@@ -132,6 +132,8 @@ dmypy.json
 
 # my files
 tasks_organizer/secret_settings.py
+tasks/management/
+
 
 
 
