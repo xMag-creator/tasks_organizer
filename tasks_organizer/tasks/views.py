@@ -44,6 +44,9 @@ class CreateTask(APIView):
 
 
 class EditTask(APIView):
+    """
+    Edit existing task.
+    """
     def get_object(self, pk):
         try:
             return Task.objects.get(pk=pk)
@@ -60,6 +63,9 @@ class EditTask(APIView):
 
 
 class DeleteTask(APIView):
+    """
+    Delete existing task.
+    """
     def get_object(self, pk):
         try:
             return Task.objects.get(pk=pk)

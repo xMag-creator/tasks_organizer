@@ -7,6 +7,9 @@ from .serializers import TasksSerializer
 
 # Create your tests here.
 class TasksAPITest(APITestCase):
+    """
+    testing task list view, method: GET
+    """
     def setUp(self):
         self.url = reverse('tasks')
         self.task1 = Task.objects.create(name='test1')
@@ -22,6 +25,9 @@ class TasksAPITest(APITestCase):
 
 
 class CreateTaskViewTestCase(APITestCase):
+    """
+        testing create task view, method: POST
+    """
     def setUp(self):
         self.url = reverse('create_task')
         self.valid_payload = {'name': 'Test name', 'finished': True}
@@ -39,6 +45,9 @@ class CreateTaskViewTestCase(APITestCase):
 
 
 class EditTaskViewTestCase(APITestCase):
+    """
+        testing edit task view, method: PUT
+    """
     def setUp(self):
         self.my_task = Task.objects.create(name='next_task')
         self.url = reverse('edit_task', args=[self.my_task.pk])
@@ -56,7 +65,9 @@ class EditTaskViewTestCase(APITestCase):
 
 
 class DeleteTaskViewTest(APITestCase):
-
+    """
+        testing delete task view, method: DELETE
+    """
     def setUp(self):
         self.my_task = Task.objects.create(name='test task')
         self.url = reverse('delete_task', args=[self.my_task.pk])
