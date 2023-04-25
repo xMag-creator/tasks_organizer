@@ -11,6 +11,6 @@ class TaskDate(models.Model):
         finish_time (): Information about when task need be finished.
         task (ForeignKey): Associated task pk.
     """
-    start_time = models.DateTimeField()
-    finish_time = models.DateTimeField()
-    task = models.ForeignKey(Task, on_delete=models.CASCADE)
+    start_time = models.DateTimeField(null=False)
+    finish_time = models.DateTimeField(null=False)
+    task = models.ForeignKey(Task, null=False, on_delete=models.CASCADE)

@@ -6,7 +6,7 @@ from .serializers import TasksSerializer
 
 
 # Create your tests here.
-class TasksAPITest(APITestCase):
+class TasksAPITestCase(APITestCase):
     """
     testing task list view, method: GET
     """
@@ -64,7 +64,7 @@ class EditTaskViewTestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
 
-class DeleteTaskViewTest(APITestCase):
+class DeleteTaskViewTestCase(APITestCase):
     """
         testing delete task view, method: DELETE
     """
