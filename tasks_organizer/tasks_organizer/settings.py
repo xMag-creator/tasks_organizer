@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     # my apps
     'rest_framework',
     'tasks',
+    'tasks_calendar',
+
 ]
 
 MIDDLEWARE = [
