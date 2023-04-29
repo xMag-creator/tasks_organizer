@@ -54,8 +54,8 @@ class EditTask(APIView):
             return Response(status=status.HTTP_404_NOT_FOUND)
 
     def put(self, request, pk):
-        my_task = self.get_object(pk)
-        serializer = TasksSerializer(my_task, data=request.data)
+        new_task = self.get_object(pk)
+        serializer = TasksSerializer(new_task, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)

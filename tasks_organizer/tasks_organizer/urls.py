@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from tasks.views import TasksList, CreateTask, EditTask, DeleteTask
-from tasks_calendar.views import AllTasksDates, AddTaskDate
+from tasks_calendar.views import AllTasksDates, AddTaskDate, EditTaskDate, DeleteTaskDate
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,5 +27,7 @@ urlpatterns = [
     path('delete_task/<int:pk>/', DeleteTask.as_view(), name='delete_task'),
     path('all_tasks_dates/', AllTasksDates.as_view(), name='all_tasks_dates'),
     path('add_task_date/', AddTaskDate.as_view(), name='add_task_date'),
+    path('edit_task_date/<int:pk>/', EditTaskDate.as_view(), name='edit_task_date'),
+    path('delete_task_date/<int:pk>/', DeleteTaskDate.as_view(), name='delete_task_date'),
 
 ]
